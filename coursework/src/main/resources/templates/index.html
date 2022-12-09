@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rezka Barber - Главная</title>
+	<link rel="icon" href="img/Fevicon.png" type="image/png">
+
+  <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="vendors/flat-icon/flaticon.css">
+	<link rel="stylesheet" href="vendors/nice-select/nice-select.css">
+  <link rel="stylesheet" href="vendors/Magnific-Popup/magnific-popup.css">
+  <link rel="stylesheet" href="vendors/OwlCarousel/owl.theme.default.min.css">
+  <link rel="stylesheet" href="vendors/OwlCarousel/owl.carousel.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- ================ start header Area ================= -->  
+	<header class="header_area sticky-header">
+		<div class="main_menu">
+			<nav class="navbar navbar-expand-lg navbar-light main_box">
+				<div class="container">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<a class="navbar-brand logo_h" href="index"><img src="img/logo.png" alt="">Rezka</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+						<ul class="nav navbar-nav menu_nav ml-auto">
+							<li class="nav-item active"><a class="nav-link" href="index">Главная</a></li>
+                            <li class="nav-item"><a class="nav-link" href="service">Цены/услуги</a></li>
+                            <li class="nav-item"><a class="nav-link" href="reserve">Записаться</a></li>
+                            <li class="nav-item"><a class="nav-link" href="shop">Магазин</a></li>
+
+                          <li class="nav-item submenu dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">Мы</a>
+                            <ul class="dropdown-menu">
+                              <li class="nav-item"><a class="nav-link" href="about-us">О нас</a></li>
+                              <li class="nav-item"><a class="nav-link" href="team">Команда</a></li>
+                              <li class="nav-item"><a class="nav-link" href="contact">Контакты</a></li>
+                            </ul>
+                          </li>
+
+                          <li sec:authorize="!isAuthenticated()" class="nav-item">
+                            <a class="nav-link" href="/login">Войти</a>
+                          </li>
+
+                          <li class="nav-item submenu dropdown" sec:authorize="isAuthenticated()">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false" sec:authentication="name"></a>
+                            <ul class="dropdown-menu">
+                              <li class="nav-item" sec:authorize="hasRole('ADMIN')"><a class="nav-link" href="/admin">Админ</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/orders">Заказы</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/lk">ЛК</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/cart">Корзина</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/logout">Выйти</a></li>
+                            </ul>
+                          </li>
+
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
+  <!-- ================ end header Area ================= -->  
+  
+  <main class="site-main">
+    
+    <!-- ================ start hero banner Area ================= -->    
+    <section class="hero-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="hero-banner__img">
+              <img class="img-fluid" src="img/banner/hero-banner.png" alt="">
+            </div>
+          </div>
+          <div class="col-md-6 pl-xl-4">
+            <div class="hero-banner__content">
+              <h1>Мы специализируемся на всех типах волос</h1>
+              <p>Наша компания сделает из любого человека завидного красавца, даже не сомневайтесь в этом!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ================ end hero banner Area ================= -->    
+
+
+    <!-- ================ start about section ================= -->    
+    <section class="section-margin about-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 mb-5 mb-lg-0">
+            <div class="about__content">
+              <div class="section-intro">
+                <h4 class="section-intro__title">О нас</h4>
+                <h2 class="section-intro__subtitle">Мы художники, волосы — наш холст</h2>
+              </div>
+              <p>25 лет на рынке России. Мы точно знаем наших клиентов и предлагаем только услуги качества "Премиум". Не обращайтесь к энтузиастам, выбирайте профессионалов!</p>
+            </div>
+          </div>
+          <div class="col-lg-5 offset-lg-2">
+            <div class="about__img">
+              <img class="img-fluid" src="img/home/barber-frame.png" alt="">
+              <img src="img/home/barber-work.png" alt="" class="about__img--small img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ================ end about section ================= -->    
+
+    
+    <!-- ================ start feature section ================= -->    
+    <section class="section-margin--large">
+      <div class="container">
+        <div class="section-intro pb-70px">
+          <h4 class="section-intro__title">Расширенные услуги</h4>
+          <h2 class="section-intro__subtitle">Наша сила в вашей <span class="d-block">Безупречной красоте</span></h2>
+        </div>
+
+        <div class="row gutters-48">
+          <div class="col-md-6 col-xl-3 mb-5 mb-xl-0">
+            <div class="card text-center card-feature border-style">
+              <div class="card-feature__icon"><i class="flaticon-barber-chair"></i></div>
+              <h3 class="card-feature__title">Лучшее место</h3>
+              <p>Мы находимся в центре прекрасной Москвы, добраться до нас не составит сложностей</p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-xl-3 mb-5 mb-xl-0">
+            <div class="card text-center card-feature border-style">
+              <div class="card-feature__icon"><i class="flaticon-cut"></i></div>
+              <h3 class="card-feature__title">Лучшее оборудование</h3>
+              <p>Мы выбираем только лучшие бренды инструментов, чтобы вы были на высоте</p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-xl-3 mb-5 mb-xl-0">
+            <div class="card text-center card-feature border-style">
+              <div class="card-feature__icon"><i class="flaticon-mirror"></i></div>
+              <h3 class="card-feature__title">Лучший стиль</h3>
+              <p>Делаем стильно, молодежно, стильно, престижно. Вы станете иконой, на которую будут равняться</p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-xl-3 mb-5 mb-xl-0">
+            <div class="card text-center card-feature border-style">
+              <div class="card-feature__icon"><i class="flaticon-barbershop"></i></div>
+              <h3 class="card-feature__title">Команда экспертов</h3>
+              <p>Вас будут обслуживать профессионалы своего дела, которые обучались данному ремеслу у величайших</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ================ end feature section ================= -->
+    
+    <!-- ================ service section start ================= -->      
+    <section class="section-margin--large">
+      <div class="container">
+        <div class="section-intro pb-70px">
+          <h4 class="section-intro__title">Наши услуги</h4>
+          <h2 class="section-intro__subtitle">Наша сила в вашей <span class="d-block">Безупречной красоте</span></h2>
+        </div>
+        <div class="row gutters-48 card-service-wrapper">
+          <div class="col-lg-4">
+            <div class="card text-center card-service border-style">
+              <div class="card-service__icon"><i class="flaticon-cut"></i></div>
+              <h3 class="card-service__title">Стильная стрижка</h3>
+              <p>Покажите всему миру вашу безупречную мужскую стрижку</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card text-center card-service border-style">
+              <div class="card-service__icon"><i class="flaticon-wellness"></i></div>
+              <h3 class="card-service__title">Стрижка и прическа</h3>
+              <p>Мы сможем сделать все, что вы пожелаете. Хотите стать дедом морозом или серьезным брокером? Без проблем</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card text-center card-service border-style">
+              <div class="card-service__icon"><i class="flaticon-shower"></i></div>
+              <h3 class="card-service__title">Окрашивание и мытье волос</h3>
+              <p>Окрашиваем во все цвета радуги и не только. Весь спектр RGB к вашим услугам</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ================ service section end ================= -->      
+    
+    <!-- ================ team section start ================= -->      
+    <section class="section-padding--large bg-soapstone">
+      <div class="container">
+        <div class="section-intro pb-70px">
+          <h4 class="section-intro__title">Наша команда</h4>
+          <h2 class="section-intro__subtitle">Опыт персонала <span class="d-block">Ваш вид</span></h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+            <div class="card card-team">
+              <div class="card-team__img">
+                <img class="card-img rounded-0" src="img/team/team1.png" alt="">
+              </div>
+              <div class="card-team__position">
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div class="card-team__bio">
+                    <h4><a href="#">Алексей Ножничкин</a></h4>
+                    <p>Специалист по волосам</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+            <div class="card card-team">
+              <div class="card-team__img">
+                <img class="card-img rounded-0" src="img/team/team2.jpg" alt="">
+              </div>
+              <div class="card-team__position">
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div class="card-team__bio">
+                    <h4><a href="#">Дмитрий Подстрижанькин</a></h4>
+                    <p>Специалист по волосам</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+            <div class="card card-team">
+              <div class="card-team__img">
+                <img class="card-img rounded-0" src="img/team/team3.jpg" alt="">
+              </div>
+              <div class="card-team__position">
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                  <div class="card-team__bio">
+                    <h4><a href="#">Жан Пежо</a></h4>
+                    <p>Специалист по волосам</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> 
+    <!-- ================ team section end ================= -->      
+
+    <!-- ================ pricing section start ================= -->      
+    <section class="section-margin--large pricing-relative">
+      <div class="container">
+        <div class="section-intro pb-70px">
+          <h4 class="section-intro__title">Цены</h4>
+          <h2 class="section-intro__subtitle">Выберите ваш <span class="d-block">Пакет</span></h2>
+        </div>
+        <div class="row gutters-48">
+          <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+            <div class="card text-center card-pricing border-style">
+              <div class="card-pricing__header">
+                <h3>Стандарт</h3>
+                <p>Стандартный пакет</p>
+              </div>
+              <div class="card-pricing__price">
+                <h2>₽3490</h2>
+              </div>
+              <ul class="card-pricing__list">
+                <li>Базовая стрижка</li>
+                <li>Базовое бритье</li>
+                <li>Базовое мытье головы</li>
+                <li>Базовый массаж</li>
+                <li>Базовые снэки</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+            <div class="card text-center card-pricing border-style">
+              <div class="card-pricing__header">
+                <h3>Иностранец</h3>
+                <p>Обворожительный пакет</p>
+              </div>
+              <div class="card-pricing__price">
+                <h2>₽4490</h2>
+              </div>
+              <ul class="card-pricing__list">
+                <li>Французская стрижка</li>
+                <li>Бритье а-ля Френч</li>
+                <li>Цветочное мытье головы</li>
+                <li>Расслабляющий массаж</li>
+                <li>Круассаны и вино</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+            <div class="card text-center card-pricing border-style">
+              <div class="card-pricing__header">
+                <h3>Самурай</h3>
+                <p>Лучше не бывает</p>
+              </div>
+              <div class="card-pricing__price">
+                <h2>₽6990</h2>
+              </div>
+              <ul class="card-pricing__list">
+                <li>Древнеяпонская стрижка</li>
+                <li>Бритье JDM</li>
+                <li>Мытье священной водой</li>
+                <li>Массаж "Сакура"</li>
+                <li>Премиум Авамори и саке</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ================ pricing section end ================= -->      
+
+
+    <!-- ================ testimonial section start ================= -->      
+    <section class="testimonial testimonial-position">
+      <div class="container">
+        <div class="testi_slider owl-carousel owl-theme">
+          <div class="item">
+            <div class="testi_item">
+              <img src="img/home/testimonial1.png" alt="">
+              <div class="testi_item_content">
+                <p>
+                  <i class="fas fa-quote-left"></i>
+                  Узнал об этих ребятах по собственным каналам. Сказали, что делают безупречно. Так оно и оказалось! Рекомендую их 100%, доверьте им свою голову, сделают идеально.
+                </p>
+                <h4>Дмитрий Немедведев</h4>
+                <p>Депутат, Филантроп</p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="testi_item">
+              <img src="img/home/testimonial1.png" alt="">
+              <div class="testi_item_content">
+                <p>
+                  <i class="fas fa-quote-left"></i>
+                  Когда я начинал "с низов", брился сам, ну и отношение среди коллег ко мне было соответствующее. Решил изменить имидж, перевернуть, так сказать, листок жизни. Прическу доверил Алексею, сделал на 5+. Рекомендую
+                </p>
+                <h4>Инокентий Бальзамик</h4>
+                <p>Шеф-Повар, Инвестор</p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="testi_item">
+              <img src="img/home/testimonial1.png" alt="">
+              <div class="testi_item_content">
+                <p>
+                  <i class="fas fa-quote-left"></i>
+                  Надоели энтузиасты, которые стригут как хотят, а берут сполна. Как-то раз зашел в данный барбер и не поверил, что такие профессионалы вообще существуют и находятся не где-нибудь в Америке, а тут, в РФ. Приятно удивили!
+                </p>
+                <h4>Василий *скрыто*</h4>
+                <p>Человек, а может и не человек</p>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+    <!-- ================ testimonial section end ================= -->
+
+  </main>      
+
+
+  <!-- ================ start footer Area ================= -->
+  <footer class="footer-area section-gap">
+		<div class="container">
+			<div class="footer-bottom row align-items-center text-center text-lg-left">
+				<p class="footer-text m-0 col-lg-8 col-md-12">
+Copyright &copy; All rights reserved</p>
+			</div>
+		</div>
+	</footer>
+  <!-- ================ End footer Area ================= -->
+
+  <script src="vendors/jquery/jquery-3.2.1.min.js"></script>
+  <script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="vendors/OwlCarousel/owl.carousel.min.js"></script>
+  <script src="vendors/sticky/jquery.sticky.js"></script>
+  <script src="js/jquery.ajaxchimp.min.js"></script>
+	<script src="js/mail-script.js"></script>
+  <script src="vendors/Magnific-Popup/jquery.magnific-popup.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rezka Barber - Регистрация</title>
+    <link rel="icon" href="img/Fevicon.png" type="image/png">
+
+    <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="vendors/flat-icon/flaticon.css">
+    <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
+    <link rel="stylesheet" href="vendors/Magnific-Popup/magnific-popup.css">
+    <link rel="stylesheet" href="vendors/OwlCarousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="vendors/OwlCarousel/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- ================ start header Area ================= -->
+<header class="header_area sticky-header">
+    <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light main_box">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <a class="navbar-brand logo_h" href="index"><img src="img/logo.png" alt="">Rezka</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav menu_nav ml-auto">
+                        <li class="nav-item active"><a class="nav-link" href="index">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="service">Цены/услуги</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reserve">Записаться</a></li>
+                        <li class="nav-item"><a class="nav-link" href="shop">Магазин</a></li>
+
+                        <li class="nav-item submenu dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">Мы</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link" href="about-us">О нас</a></li>
+                                <li class="nav-item"><a class="nav-link" href="team">Команда</a></li>
+                                <li class="nav-item"><a class="nav-link" href="contact">Контакты</a></li>
+                            </ul>
+                        </li>
+
+                        <li sec:authorize="!isAuthenticated()" class="nav-item">
+                            <a class="nav-link" href="/login">Войти</a>
+                        </li>
+
+                        <li class="nav-item submenu dropdown" sec:authorize="isAuthenticated()">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false" sec:authentication="name"></a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item" sec:authorize="hasRole('ADMIN')"><a class="nav-link" href="/admin">Админ</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/orders">Заказы</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/lk">ЛК</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/cart">Корзина</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/logout">Выйти</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<!-- ================ end header Area ================= -->
+
+<!-- ================ start banner area ================= -->
+<section class="banner-area service" id="service">
+    <div class="container h-100">
+        <div class="banner-area__content text-center">
+            <h1>Регистрация</h1>
+            <nav aria-label="breadcrumb" class="banner-breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index">Главная</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Регистрация</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<!-- ================ end banner area ================= -->
+
+
+<!-- ================ reg section start ================= -->
+<section class="section-margin--large">
+    <div class="container">
+
+        <form action="/register" th:object="${user}" th:method="POST">
+            <fieldset>
+                <h1>Регистрация</h1>
+                <figure>
+                    <figcaption class="blackquote-footer">
+                        Введите свои данные
+                    </figcaption>
+                </figure>
+
+                <div th:if="${errorLenUsername}">
+                    <div class="alert alert-danger">
+                        Имя пользователя должно быть не менее 5 символов
+                    </div>
+                </div>
+                <div th:if="${errorLenPassword}">
+                    <div class="alert alert-danger">
+                        Пароль должен быть не менее 5 символов
+                    </div>
+                </div>
+                <div th:if="${errorConfPassword}">
+                    <div class="alert alert-danger">
+                        Пароли не совпадают
+                    </div>
+                </div>
+                <div th:if="${errorAlreadyExistsUsername}">
+                    <div class="alert alert-danger">
+                        Пользователь с таким ником уже существует
+                    </div>
+                </div>
+                <div th:if="${errorAnomaly}">
+                    <div class="alert alert-danger">
+                        Аномальная ошибка
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="username" th:field="*{username}" id="username" class="form-control input-lg"
+                           placeholder="Никнейм" required="true" autofocus="true"/>
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="password" name="password" th:field="*{password}" id="password" class="form-control input-lg"
+                           placeholder="Пароль" required="true"/>
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="password" name="passwordConfirm" th:field="*{passwordConfirm}" id="passwordConfirm" class="form-control input-lg"
+                           placeholder="Повторите пароль" required="true"/>
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="email" name="email" id="email" th:field="*{email}" class="form-control input-lg"
+                           placeholder="Email" required="true"/>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Зарегистрироваться"/>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
+        <div>
+            <br><br>
+            <a href="/login" class="btn btn-outline-success" role="button">Авторизоваться</a>
+            <a href="/" class="btn btn-outline-success" role="button">Вернуться на главную</a>
+        </div>
+
+    </div>
+    </div>
+</section>
+<!-- ================ reg section end ================= -->
+
+<!-- ================ start footer Area ================= -->
+<footer class="footer-area section-gap">
+    <div class="container">
+        <div class="footer-bottom row align-items-center text-center text-lg-left">
+            <p class="footer-text m-0 col-lg-8 col-md-12">
+                Copyright &copy; All rights reserved</p>
+        </div>
+    </div>
+</footer>
+<!-- ================ End footer Area ================= -->
+
+<script src="vendors/jquery/jquery-3.2.1.min.js"></script>
+<script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="vendors/OwlCarousel/owl.carousel.min.js"></script>
+<script src="vendors/sticky/jquery.sticky.js"></script>
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/mail-script.js"></script>
+<script src="vendors/Magnific-Popup/jquery.magnific-popup.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

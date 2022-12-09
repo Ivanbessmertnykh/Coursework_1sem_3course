@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rezka Barber - Контакты</title>
+	<link rel="icon" href="img/Fevicon.png" type="image/png">
+
+  <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="vendors/flat-icon/flaticon.css">
+	<link rel="stylesheet" href="vendors/nice-select/nice-select.css">
+  <link rel="stylesheet" href="vendors/Magnific-Popup/magnific-popup.css">
+  <link rel="stylesheet" href="vendors/OwlCarousel/owl.theme.default.min.css">
+  <link rel="stylesheet" href="vendors/OwlCarousel/owl.carousel.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- ================ start header Area ================= -->
+<header class="header_area sticky-header">
+    <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light main_box">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <a class="navbar-brand logo_h" href="index"><img src="img/logo.png" alt="">Rezka</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav menu_nav ml-auto">
+                        <li class="nav-item active"><a class="nav-link" href="index">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="service">Цены/услуги</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reserve">Записаться</a></li>
+                        <li class="nav-item"><a class="nav-link" href="shop">Магазин</a></li>
+
+                        <li class="nav-item submenu dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">Мы</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link" href="about-us">О нас</a></li>
+                                <li class="nav-item"><a class="nav-link" href="team">Команда</a></li>
+                                <li class="nav-item"><a class="nav-link" href="contact">Контакты</a></li>
+                            </ul>
+                        </li>
+
+                        <li sec:authorize="!isAuthenticated()" class="nav-item">
+                            <a class="nav-link" href="/login">Войти</a>
+                        </li>
+
+                        <li class="nav-item submenu dropdown" sec:authorize="isAuthenticated()">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false" sec:authentication="name"></a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item" sec:authorize="hasRole('ADMIN')"><a class="nav-link" href="/admin">Админ</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/orders">Заказы</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/lk">ЛК</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/cart">Корзина</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/logout">Выйти</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<!-- ================ end header Area ================= -->
+
+<!-- ================ start banner area ================= -->
+	<section class="banner-area contact" id="contact">
+		<div class="container h-100">
+			<div class="banner-area__content text-center">
+        <h1>Контакты</h1>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Контакты</li>
+          </ol>
+        </nav>
+			</div>
+    </div>
+	</section>
+	<!-- ================ end banner area ================= -->
+
+	<!-- ================ contact section start ================= -->
+  <section class="section-margin">
+    <div class="container">
+      <div class="d-none d-sm-block mb-5 pb-4">
+		  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1122.4470707982778!2d37.628818516537635!3d55.76034109654578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a5c32be8035%3A0x327c045ebcfec6bd!2sMoscow%20spiritual%20Consistory%20building!5e0!3m2!1sru!2sru!4v1652796413221!5m2!1sru!2sru" width="600" height="420" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-lg-3 mb-4 mb-md-0">
+          <div class="media contact-info">
+            <span class="contact-info__icon"><i class="ti-home"></i></span>
+            <div class="media-body">
+              <h3>Москва, Российская Федерация</h3>
+              <p>Мясницкая, 3</p>
+            </div>
+          </div>
+          <div class="media contact-info">
+            <span class="contact-info__icon"><i class="ti-headphone"></i></span>
+            <div class="media-body">
+              <h3><a href="tel:+79457777777">+7(945)777-77-77</a></h3>
+              <p>Каждый день с 10 до 14</p>
+            </div>
+          </div>
+          <div class="media contact-info">
+            <span class="contact-info__icon"><i class="ti-email"></i></span>
+            <div class="media-body">
+              <h3><a href="mailto:rezkabarber@gmail.com">rezkabarber@gmail.com</a></h3>
+              <p>Поддержка круглосуточно!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+	<!-- ================ contact section end ================= -->
+
+
+
+  <!-- ================ start footer Area ================= -->
+  <footer class="footer-area section-gap">
+	  <div class="container">
+		  <div class="footer-bottom row align-items-center text-center text-lg-left">
+			  <p class="footer-text m-0 col-lg-8 col-md-12">
+				  Copyright &copy; All rights reserved</p>
+		  </div>
+	  </div>
+  </footer>
+  <!-- ================ End footer Area ================= -->
+
+  <script src="vendors/jquery/jquery-3.2.1.min.js"></script>
+  <script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="vendors/OwlCarousel/owl.carousel.min.js"></script>
+  <script src="vendors/sticky/jquery.sticky.js"></script>
+  <script src="js/jquery.ajaxchimp.min.js"></script>
+	<script src="js/mail-script.js"></script>
+  <script src="vendors/Magnific-Popup/jquery.magnific-popup.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
